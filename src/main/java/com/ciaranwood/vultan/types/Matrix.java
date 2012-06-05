@@ -45,9 +45,9 @@ public class Matrix {
     public Integer nTranslateBits;
 
     @SignedNumber(size = "nTranslateBits")
-    public Integer translateX;
+    public Twip translateX;
 
     @SignedNumber(size = "nTranslateBits")
-    public Integer translateY;
+    public Twip translateY;
 
 }

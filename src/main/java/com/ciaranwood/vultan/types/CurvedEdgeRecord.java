@@ -19,5 +19,5 @@ public class CurvedEdgeRecord implements ShapeRecord {
     public Twip anchorDeltaX;
 
     @SignedNumber(size = "numBits + 2")
-    public Twip snchorDeltaY;
+    public Twip anchorDeltaY;
 }

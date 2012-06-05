@@ -1,8 +1,12 @@
 package com.ciaranwood.vultan.types;
 
+import java.math.BigDecimal;
+
 public class Twip {
 
     private Integer twips;
+
+    private static final BigDecimal DIVISOR = new BigDecimal("20");
 
     public Twip(Integer twips) {
         this.twips = twips;
@@ -10,6 +14,11 @@ public class Twip {
 
     public Integer getTwips() {
         return twips;
+    }
+
+    public BigDecimal getPixels() {
+        BigDecimal inTwips = new BigDecimal(twips);
+        return inTwips.divide(DIVISOR);
     }
 
     @Override

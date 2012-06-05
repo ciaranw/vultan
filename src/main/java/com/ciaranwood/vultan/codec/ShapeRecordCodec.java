@@ -63,7 +63,7 @@ public class ShapeRecordCodec implements Codec<ShapeRecord> {
     }
 
     public Class<?>[] getTypes() {
-        return new Class<?>[] {EndShapeRecord.class, StyleChangeRecord.class, StraightEdgeRecord.class, CurvedEdgeRecord.class};
+        return new Class<?>[] {EndShapeRecord.class, ShapeWithStyle.StyleChangeRecord.class, StraightEdgeRecord.class, CurvedEdgeRecord.class};
     }
 
     public Class<?> getType() {

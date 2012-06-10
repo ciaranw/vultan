@@ -12,9 +12,11 @@ import java.io.IOException;
 public class SignedNumberCodec implements Codec<Number> {
     
     private final Expression<Integer, Resolver> sizeExpression;
+    private final ByteOrder byteOrder;
 
-    public SignedNumberCodec(Expression<Integer, Resolver> sizeExpression) {
+    public SignedNumberCodec(Expression<Integer, Resolver> sizeExpression, ByteOrder byteOrder) {
         this.sizeExpression = sizeExpression;
+        this.byteOrder = byteOrder;
     }
 
     public Number decode(BitBuffer buffer, Resolver resolver, Builder builder) throws DecodingException {
@@ -24,12 +26,12 @@ public class SignedNumberCodec implements Codec<Number> {
         }
 
         if(size.equals(1)) {
-            return buffer.readAsInt(1, ByteOrder.BigEndian);
+            return buffer.readAsInt(1, byteOrder);
         }
 
-        boolean highestBit = buffer.readAsBoolean();
+        boolean highestBit = buffer.readAsBoolean(byteOrder);
 
-        Integer rest = (Integer) NumericCodec.NumericType.Integer.decode(buffer, size - 1, ByteOrder.BigEndian);
+        Integer rest = (Integer) NumericCodec.NumericType.Integer.decode(buffer, size - 1, byteOrder);
 
         if(highestBit) {
             Integer negate = 1 << (size - 1);

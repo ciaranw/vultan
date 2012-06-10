@@ -4,6 +4,7 @@ import org.codehaus.preon.Codec;
 import org.codehaus.preon.CodecFactory;
 import org.codehaus.preon.Resolver;
 import org.codehaus.preon.ResolverContext;
+import org.codehaus.preon.buffer.ByteOrder;
 import org.codehaus.preon.el.Expression;
 import org.codehaus.preon.el.Expressions;
 
@@ -15,7 +16,8 @@ public class SignedNumberCodecFactory implements CodecFactory {
         if(metadata != null && metadata.isAnnotationPresent(SignedNumber.class)) {
             SignedNumber annotation = metadata.getAnnotation(SignedNumber.class);
             Expression<Integer, Resolver> sizeExpr = Expressions.createInteger(context, annotation.size());
-            return (Codec<T>) new SignedNumberCodec(sizeExpr);
+            ByteOrder byteOrder = annotation.byteOrder();
+            return (Codec<T>) new SignedNumberCodec(sizeExpr, byteOrder);
         } else {
             return null;
         }

@@ -6,7 +6,7 @@ import org.codehaus.preon.annotation.Bound;
 import org.codehaus.preon.annotation.BoundNumber;
 import org.codehaus.preon.annotation.ByteAlign;
 
-public class DefineShape {
+public class DefineShape implements DefinitionTag {
 
     @BoundNumber(size = "16")
     public Integer shapeId;
@@ -17,4 +17,8 @@ public class DefineShape {
 
     @Bound
     public ShapeWithStyle shapes;
+
+    public Integer getCharacterId() {
+        return shapeId;
+    }
 }

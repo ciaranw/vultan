@@ -6,7 +6,7 @@ import org.codehaus.preon.annotation.BoundNumber;
 
 import java.util.List;
 
-public class DefineSprite {
+public class DefineSprite implements DefinitionTag {
 
     @BoundNumber(size = "16")
     public Integer spriteId;
@@ -16,4 +16,8 @@ public class DefineSprite {
 
     @BoundExplicitly(factory = TagCodecFactory.class)
     public List<Object> tags;
+
+    public Integer getCharacterId() {
+        return spriteId;
+    }
 }

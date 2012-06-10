@@ -1,7 +1,5 @@
 package com.ciaranwood.vultan.tags;
 
-import org.codehaus.preon.annotation.BoundEnumOption;
-
 public enum TagType {
     Unknown(-1, null),
     End(0, End.class),
@@ -10,6 +8,7 @@ public enum TagType {
     SetBackgroundColor(9, SetBackgroundColor.class),
     DefineShape2(22, DefineShape.class),
     PlaceObject2(26, PlaceObject2.class),
+    RemoveObject2(28, RemoveObject2.class),
     DefineSprite(39, DefineSprite.class),
     FileAttributes(69, FileAttributes.class),
     SymbolClass(76, SymbolClass.class);

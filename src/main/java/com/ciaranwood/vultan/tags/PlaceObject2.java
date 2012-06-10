@@ -61,4 +61,16 @@ public class PlaceObject2 {
 
     @If("placeFlagHasClipActions")
     public Object clipActions;
+
+    public boolean isAddNewCharacter() {
+        return !placeFlagMove && placeFlagHasCharacter;
+    }
+
+    public boolean isModifyExistingCharacter() {
+        return placeFlagMove && !placeFlagHasCharacter;
+    }
+
+    public boolean isReplaceCharacter() {
+        return placeFlagMove && placeFlagHasCharacter;
+    }
 }

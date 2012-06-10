@@ -9,7 +9,8 @@ public class CustomTypes {
                 .codecFactories(new TwipCodecFactory(),
                         new FixedNumberCodecFactory(),
                         new ShapeRecordCodecFactory(),
-                        new SignedNumberCodecFactory())
+                        new SignedNumberCodecFactory(),
+                        new FBCodecFactory())
                 .codecDecorators(new LoggingDecorator(),
                         new ReadZeroLengthCodecDecorator(),
                         new StartByteAlignedCodecDecorator()

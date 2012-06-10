@@ -1,5 +1,6 @@
 package com.ciaranwood.vultan.types;
 
+import com.ciaranwood.vultan.codec.FB;
 import com.ciaranwood.vultan.codec.Fixed;
 import com.ciaranwood.vultan.codec.SignedNumber;
 import org.codehaus.preon.annotation.Bound;
@@ -19,11 +20,11 @@ public class Matrix {
     public Integer nScaleBits;
 
     @If("hasScale")
-    @Fixed(size = "nScaleBits", lowBitSize = "16")
+    @FB(size = "nScaleBits")
     public BigDecimal scaleX;
 
     @If("hasScale")
-    @Fixed(size = "nScaleBits", lowBitSize = "16")
+    @FB(size = "nScaleBits")
     public BigDecimal scaleY;
 
     @Bound
@@ -34,11 +35,11 @@ public class Matrix {
     public Integer nRotateBits;
 
     @If("hasRotate")
-    @Fixed(size = "nRotateBits", lowBitSize = "16")
+    @FB(size = "nRotateBits")
     public BigDecimal rotateSkew0;
 
     @If("hasRotate")
-    @Fixed(size = "nRotateBits", lowBitSize = "16")
+    @FB(size = "nRotateBits")
     public BigDecimal rotateSkew1;
 
     @BoundNumber(size = "5", byteOrder = ByteOrder.BigEndian)

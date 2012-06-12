@@ -1,9 +1,6 @@
 package com.ciaranwood.vultan.types;
 
-import org.codehaus.preon.annotation.Bound;
-import org.codehaus.preon.annotation.BoundList;
-import org.codehaus.preon.annotation.BoundNumber;
-import org.codehaus.preon.annotation.If;
+import org.codehaus.preon.annotation.*;
 import org.codehaus.preon.buffer.ByteOrder;
 
 public class FillStyleArray {

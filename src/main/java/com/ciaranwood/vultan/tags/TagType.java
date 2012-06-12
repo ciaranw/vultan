@@ -9,9 +9,11 @@ public enum TagType {
     DefineShape2(22, DefineShape.class),
     PlaceObject2(26, PlaceObject2.class),
     RemoveObject2(28, RemoveObject2.class),
+    DefineShape3(32, DefineShape3.class),
     DefineSprite(39, DefineSprite.class),
     FileAttributes(69, FileAttributes.class),
-    SymbolClass(76, SymbolClass.class);
+    SymbolClass(76, SymbolClass.class),
+    DefineShape4(83, DefineShape4.class);
 
     private Integer code;
     private Class<?> type;

@@ -3,11 +3,13 @@ package com.ciaranwood.vultan.types;
 import com.ciaranwood.vultan.codec.ReadZeroLength;
 import com.ciaranwood.vultan.codec.SignedNumber;
 import com.ciaranwood.vultan.codec.StartByteAligned;
+import com.ciaranwood.vultan.codec.Versioned;
 import org.codehaus.preon.annotation.*;
 import org.codehaus.preon.buffer.ByteOrder;
 
 import java.util.List;
 
+@Versioned(1)
 public class ShapeWithStyle {
 
     @Bound
@@ -26,6 +28,7 @@ public class ShapeWithStyle {
     @ByteAlign
     public List<ShapeRecord> shapeRecords;
 
+    @Versioned(1)
     public class StyleChangeRecord implements ShapeRecord {
 
         @Bound
@@ -95,6 +98,22 @@ public class ShapeWithStyle {
             }
         }
 
+    }
+
+    @Versioned(3)
+    public static class ShapeWithStyle3 extends ShapeWithStyle {
+    }
+
+    @Versioned(3)
+    public class StyleChangeRecord3 extends StyleChangeRecord {
+    }
+
+    @Versioned(4)
+    public static class ShapeWithStyle4 extends ShapeWithStyle {
+    }
+
+    @Versioned(4)
+    public class StyleChangeRecord4 extends StyleChangeRecord {
     }
 
 }

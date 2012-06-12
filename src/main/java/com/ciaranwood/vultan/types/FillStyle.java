@@ -1,5 +1,6 @@
 package com.ciaranwood.vultan.types;
 
+import com.ciaranwood.vultan.codec.Versioned;
 import org.codehaus.preon.annotation.Bound;
 import org.codehaus.preon.annotation.BoundNumber;
 import org.codehaus.preon.annotation.If;
@@ -13,7 +14,18 @@ public class FillStyle {
 
     @If("fillStyleType == FillStyleType.SOLID")
     @Bound
-    public RGB color;
+    @Versioned(1)
+    public RGB colorv1;
+
+    @If("fillStyleType == FillStyleType.SOLID")
+    @Bound
+    @Versioned(3)
+    public RGBA colorv3;
+
+    @If("fillStyleType == FillStyleType.SOLID")
+    @Bound
+    @Versioned(4)
+    public RGBA colorv4;
 
     @If("(fillStyleType == FillStyleType.LINEAR_GRADIENT) || " +
         "(fillStyleType == FillStyleType.RADIAL_GRADIENT) || " +

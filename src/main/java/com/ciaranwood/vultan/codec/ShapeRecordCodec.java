@@ -29,7 +29,14 @@ public class ShapeRecordCodec implements Codec<ShapeRecord> {
     }
 
     private ShapeRecord decodeNonEdgeRecord(BitBuffer buffer, Resolver resolver, Builder builder) throws DecodingException {
-        Codec<ShapeWithStyle.StyleChangeRecord> codec = factory.create(null, ShapeWithStyle.StyleChangeRecord.class, context);
+        Class<? extends ShapeWithStyle.StyleChangeRecord> type = ShapeWithStyle.StyleChangeRecord.class;
+        if(VersionStack.INSTANCE.getCurrentVersion().equals(3)) {
+            type = ShapeWithStyle.StyleChangeRecord3.class;
+        } else if(VersionStack.INSTANCE.getCurrentVersion().equals(4)) {
+            type = ShapeWithStyle.StyleChangeRecord4.class;
+        }
+
+        Codec<? extends ShapeWithStyle.StyleChangeRecord> codec = factory.create(null, type, context);
         ShapeWithStyle.StyleChangeRecord record = codec.decode(buffer, resolver, builder);
         if(record.stateNewStyles || record.stateLineStyle || record.stateFillStyle1 || record.stateFillStyle0 || record.stateMoveTo) {
             return record;

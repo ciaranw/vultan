@@ -44,6 +44,7 @@ public class DefaultCodecFactory implements CodecFactory {
         // Create the default BindingFactory.
         BindingFactory bindingFactory = new StandardBindingFactory();
         bindingFactory = new ConditionalBindingFactory(bindingFactory);
+        bindingFactory = new VersionedBindingFactory(bindingFactory);
         if (bindingDecorators.size() != 0) {
             BindingDecorator[] decoratorsArray = bindingDecorators.toArray(new BindingDecorator[bindingDecorators.size()]);
             bindingFactory = new DecoratingBindingFactory(bindingFactory, decoratorsArray);
@@ -59,6 +60,7 @@ public class DefaultCodecFactory implements CodecFactory {
         decorators.add(new SlicingCodecDecorator());
         decorators.add(new ByteAligningDecorator());
         decorators.add(new InitCodecDecorator());
+        decorators.add(new VersionedCodecDecorator());
         decorators.addAll(addOnDecorators);
 
         DecoratingCodecFactory top = new DecoratingCodecFactory(codecFactory,

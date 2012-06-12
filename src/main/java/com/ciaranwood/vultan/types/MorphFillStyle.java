@@ -7,33 +7,31 @@ import org.codehaus.preon.annotation.If;
 import org.codehaus.preon.el.ImportStatic;
 
 @ImportStatic(FillStyleType.class)
-public class FillStyle {
+public class MorphFillStyle {
 
     @BoundNumber(size = "8")
     public FillStyleType fillStyleType;
 
     @If("fillStyleType == FillStyleType.SOLID")
     @Bound
-    @Versioned(1)
-    public RGB colorv1;
+    public RGBA startColor;
 
     @If("fillStyleType == FillStyleType.SOLID")
     @Bound
-    @Versioned(3)
-    public RGBA colorv3;
-
-    @If("fillStyleType == FillStyleType.SOLID")
-    @Bound
-    @Versioned(4)
-    public RGBA colorv4;
+    public RGBA endColor;
 
     @If("(fillStyleType == FillStyleType.LINEAR_GRADIENT) || " +
-        "(fillStyleType == FillStyleType.RADIAL_GRADIENT) || " +
-        "(fillStyleType == FillStyleType.FOCAL_RADIAL_GRADIENT)")
+            "(fillStyleType == FillStyleType.RADIAL_GRADIENT) || " +
+            "(fillStyleType == FillStyleType.FOCAL_RADIAL_GRADIENT)")
     @Bound
-    public Matrix gradientMatrix;
+    public Matrix startGradientMatrix;
 
-    //TODO: Gradient, BitmapId, BitmapMatrix
+    @If("(fillStyleType == FillStyleType.LINEAR_GRADIENT) || " +
+            "(fillStyleType == FillStyleType.RADIAL_GRADIENT) || " +
+            "(fillStyleType == FillStyleType.FOCAL_RADIAL_GRADIENT)")
+    @Bound
+    public Matrix endGradientMatrix;
 
+    //TODO: Gradient, BitmapId, StartBitmapMatrix, EndBitmapMatrix
 
 }

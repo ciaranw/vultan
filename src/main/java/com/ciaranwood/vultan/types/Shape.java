@@ -9,14 +9,8 @@ import org.codehaus.preon.buffer.ByteOrder;
 
 import java.util.List;
 
-@Versioned(1)
-public class ShapeWithStyle {
 
-    @Bound
-    public FillStyleArray fillStyles;
-
-    @Bound
-    public LineStyleArray lineStyleArray;
+public class Shape {
 
     @BoundNumber(size = "4", byteOrder = ByteOrder.BigEndian)
     public Integer numFillBits;
@@ -93,23 +87,15 @@ public class ShapeWithStyle {
         @Init
         public void init() {
             if(stateNewStyles) {
-                ShapeWithStyle.this.numFillBits = numFillBits;
-                ShapeWithStyle.this.numLineBits = numLineBits;
+                Shape.this.numFillBits = numFillBits;
+                Shape.this.numLineBits = numLineBits;
             }
         }
 
     }
 
     @Versioned(3)
-    public static class ShapeWithStyle3 extends ShapeWithStyle {
-    }
-
-    @Versioned(3)
     public class StyleChangeRecord3 extends StyleChangeRecord {
-    }
-
-    @Versioned(4)
-    public static class ShapeWithStyle4 extends ShapeWithStyle {
     }
 
     @Versioned(4)

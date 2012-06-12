@@ -29,15 +29,15 @@ public class ShapeRecordCodec implements Codec<ShapeRecord> {
     }
 
     private ShapeRecord decodeNonEdgeRecord(BitBuffer buffer, Resolver resolver, Builder builder) throws DecodingException {
-        Class<? extends ShapeWithStyle.StyleChangeRecord> type = ShapeWithStyle.StyleChangeRecord.class;
+        Class<? extends Shape.StyleChangeRecord> type = Shape.StyleChangeRecord.class;
         if(VersionStack.INSTANCE.getCurrentVersion().equals(3)) {
-            type = ShapeWithStyle.StyleChangeRecord3.class;
+            type = Shape.StyleChangeRecord3.class;
         } else if(VersionStack.INSTANCE.getCurrentVersion().equals(4)) {
-            type = ShapeWithStyle.StyleChangeRecord4.class;
+            type = Shape.StyleChangeRecord4.class;
         }
 
-        Codec<? extends ShapeWithStyle.StyleChangeRecord> codec = factory.create(null, type, context);
-        ShapeWithStyle.StyleChangeRecord record = codec.decode(buffer, resolver, builder);
+        Codec<? extends Shape.StyleChangeRecord> codec = factory.create(null, type, context);
+        Shape.StyleChangeRecord record = codec.decode(buffer, resolver, builder);
         if(record.stateNewStyles || record.stateLineStyle || record.stateFillStyle1 || record.stateFillStyle0 || record.stateMoveTo) {
             return record;
         } else {
@@ -70,7 +70,7 @@ public class ShapeRecordCodec implements Codec<ShapeRecord> {
     }
 
     public Class<?>[] getTypes() {
-        return new Class<?>[] {EndShapeRecord.class, ShapeWithStyle.StyleChangeRecord.class, StraightEdgeRecord.class, CurvedEdgeRecord.class};
+        return new Class<?>[] {EndShapeRecord.class, Shape.StyleChangeRecord.class, StraightEdgeRecord.class, CurvedEdgeRecord.class};
     }
 
     public Class<?> getType() {

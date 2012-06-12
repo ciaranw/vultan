@@ -2,7 +2,8 @@ package com.ciaranwood.vultan.tags;
 
 import com.ciaranwood.vultan.codec.Versioned;
 import com.ciaranwood.vultan.types.Rect;
-import com.ciaranwood.vultan.types.ShapeWithStyle;
+import com.ciaranwood.vultan.types.ShapeWithStyle1;
+import com.ciaranwood.vultan.types.ShapeWithStyle4;
 import org.codehaus.preon.annotation.Bound;
 import org.codehaus.preon.annotation.BoundNumber;
 import org.codehaus.preon.annotation.ByteAlign;
@@ -28,10 +29,10 @@ public class DefineShape4 extends DefineShape {
 
     @Bound
     @Versioned(4)
-    public ShapeWithStyle.ShapeWithStyle4 shapes;
+    public ShapeWithStyle4 shapes;
 
     @Override
-    public ShapeWithStyle getShapes() {
+    public ShapeWithStyle1 getShapes() {
         return shapes;
     }
 }

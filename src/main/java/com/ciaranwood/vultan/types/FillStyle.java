@@ -35,5 +35,15 @@ public class FillStyle {
 
     //TODO: Gradient, BitmapId, BitmapMatrix
 
+    public RGB getColor() {
+        if(colorv4 != null) {
+            return colorv4;
+        } else if(colorv3 != null) {
+            return colorv3;
+        } else {
+            return colorv1;
+        }
+    }
+
 
 }
